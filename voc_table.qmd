@@ -1,0 +1,25 @@
+---
+title: "Data Science Dictionary"
+format: html
+editor: visual
+---
+
+## Data Science Dictionary
+
++-------------------------+------------------------------------------------------------------------------+
+| Word/Concept            | Definition                                                                   |
++=========================+==============================================================================+
+| Clean Data              |                                                                              |
++-------------------------+------------------------------------------------------------------------------+
+| Grammar of Graphic      | Grammar used to describe and create a wide range of statistical graphics.    |
+|                         |                                                                              |
+|                         | It uses a layer approach, building layers up to create the final graphic.    |
+|                         |                                                                              |
+|                         | The tree main components are: Data, mapping coordinates and geometric object |
++-------------------------+------------------------------------------------------------------------------+
+| Data Visualization      |                                                                              |
++-------------------------+------------------------------------------------------------------------------+
+| Long format             | A column for every dimension, and a row for every observation.               |
++-------------------------+------------------------------------------------------------------------------+
+| Wide format             |                                                                              |
++-------------------------+------------------------------------------------------------------------------+
