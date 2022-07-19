@@ -1,0 +1,79 @@
+---
+title: "try2"
+author: "Camila Vargas Poulsen"
+date: '2022-07-19'
+output: html_document
+---
+
+Just as a recap of were we left things of before our short break. For this section we are going to do a brief introduction to visualizing data using the `ggplot2` package part of the `tidyverse` bundle of packages.
+
+The goal is to introduce the basics of plotting data with `ggplot2`.
+
+We loaded the tidyverse into our working environment. And that includes `ggplot2`
+
+We read the data that we are going to be using today directly from Github.
+
+And we quickly looked into our data set using the `head()` function that shows us the first 6 rows of data.
+
+We are going to be using the National Parks Visitation data from the National Park Service. And we can see from the last thing we printed on the console, that we have years and number of visitors by National Park. Specifically we are using California's data.
+
+This data is in a long format, meaning that each row is and observation and each column is a variable. Well structured data will save you lots of time when making figures with ggplot.
+
+So now lets get into `ggplot2`
+
+**`ggplot2`** is a 
+
+- plotting package that makes it simple to create complex plots.
+
+- It allows you specifying what variables to plot, how to plot them in a programmatic interface.
+
+- ggplot graphics are built step by step by adding new elements by layers. 
+- Adding elements in layers allows for a lot flexibility and customization of plots.
+
+Let's say we want to see:
+**How has visitation changed over time within the different National Parks in California?**
+
+How has visitation to National Parks in California Changed over time?
+
+```{r}
+ggplot(data = ca_visits,
+       mapping = aes(x = year,
+                     y = visitors))+
+  geom_point()
+```
+
+
+We have a plot, but this does not answer our question. With this plot we can not really identify the data from each National Park
+
+```{r}
+## Add color by park name
+ggplot(data = ca_visits,
+       mapping = aes(x = year,
+                     y = visitors,
+                     color = park_name))+
+  geom_point()
+```
+
+
+The last thing I want to show today is a little customization of our plot. This time I'm going to copy and paste the code above and the keep building form there.
+
+```{r}
+## Customizing my plot
+ggplot(data = ca_visits,
+       mapping = aes(x = year,
+                     y = visitors,
+                     color = park_name))+
+  geom_point()+
+  labs(x = "Year",
+       y = "Visitations",
+       title = "California National Park Visitation")+
+  theme_bw()+
+  theme(legend.title = element_blank())
+```
+
+
+
+
+Anything you put in the ggplot() function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x and y axis you set up in aes().
+You can also specify aesthetics for a given geom independently of the aesthetics defined globally in the ggplot() function
+

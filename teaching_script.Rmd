@@ -8,7 +8,6 @@ output: html_document
 ## Introduction
 Hi everyone, for the last part of this session we are going to do a brief introduction to Data Visualization.
 
-A short recap of what we have done so far. Going back to the Data Analysis workflow I showed you at the beginning, we imported data using the `readr` package, we tidy and transform our data to make it "clean" and now we are going to visualize data using the `ggplot2` package, also part of the `tidyverse`. 
 
 Data visualization is an important part of analysis, it as the way to see your data. 
 Plotting your data is a good way to explore data, and the various relationships between variables. 
@@ -36,14 +35,6 @@ Let's get started...
 
 ## Plotting with `ggplot`
 As I mentioned before the `ggplot2` package is the packages in the tidyverse that is responsible for visualization.
-
-`ggplot2` is built on the grammar of graphics, the idea that any plot can be expressed from the same set of components: 
-- a data set, 
-- a coordinate system, 
--and a set of geoms--the visual representation of data points. 
-
-One way of understanding ggplot2 is thinking about a figure in layers. This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or Inkscape. 
-
 
 
 ## Load tidyverse: `tidyverse`
@@ -77,9 +68,6 @@ I'll paste on the chat the url for you to read the data.
 #National Parks in California
 ca <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv") 
 
-#2016 Visitation for all Pacific West National Parks
-visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv")
-
 ```
 
 
@@ -89,7 +77,7 @@ We are going to start by quickly exploring our dataset, to get familiarizes with
 Useful functions to explore your data:
 ```{r}
 colnames(ca) ## prints all the column names
-str(ca) ## overall structure of your dataframe
+str(ca)
 head(ca) ## first six rows
 ```
 
@@ -100,31 +88,28 @@ This dataframe is already in a *long* format where all rows are an observation a
 
 2. `visitors`, the annual visitation for each `year`
 
-Finally, to know about the content of each column the function `unique()` will print all the unique values in a row.
-```{r}
-unique(ca$park_name) ## all national parks in CA
-unique(ca$type) ## all data comes from national parks
-unique(ca$region) ## PW, pacific west
-```
-
-
 
 ## Plotting with `ggplot2`
-
-`ggplot2` is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. 
 
 ggplot likes data in the ‘long’ format: i.e., a column for every dimension, and a row for every observation. Well structured data will save you lots of time when making figures with ggplot.
 
 ggplot graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.
 
 
-As I mentioned earlier, to build a ggplot, we need to:
+One way of understanding ggplot2 is thinking about a figure in layers. This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or Inkscape. 
+_<--! Remove this comment-->_
+_Incorporate the layer concept when coding_
+
+To build a ggplot we will always need:
 
 - The `ggplot()` function,
 - Indicate which data you want to plot using the `data` argument,
 - define a coordinate system aesthetics (this means what to plot in the x axis and what to plot in the y axis) within the `aes()` function
-- provide a geom (how do we want ggplot2 to plot our data). Graphical representation of the data in the plot (points,
-      lines, bars)
+- provide a geom (how do we want ggplot2 to plot our data). Graphical representation of the data in the plot (points,lines, bars)
+
+
+**Aesthetic mappings describe how variables in the data are mapped to visual properties (aesthetics) of geoms. Aesthetic mappings can be set in ggplot() and in individual layers.**
+
 
 ```{r, eval=FALSE, purl=FALSE}
 ggplot(data = ca,
@@ -135,7 +120,6 @@ ggplot(data = ca,
 
 
 Notes:
-
 - Anything you put in the `ggplot()` function can be seen by any geom layers
   that you add (i.e., these are universal plot settings). This includes the x and
   y axis you set up in `aes()`.
